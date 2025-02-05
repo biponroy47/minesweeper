@@ -1,12 +1,14 @@
+#include "include/cell.h"
+#include "include/minesweeperwindow.h"
 #include <QApplication>
-#include <QPushButton>
 
 int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
 
-    QPushButton button("Hello, Qt!");
-    button.resize(200, 100);
-    button.show();
+  QApplication app(argc, argv);
+  MinesweeperWindow window;
+  window.show();
 
-    return app.exec();
+  Cell cell[16][30];
+
+  return app.exec();
 }

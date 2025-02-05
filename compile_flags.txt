@@ -1,2 +1,0 @@
--I/opt/homebrew/Cellar/qt/6.7.3/include
--I/opt/homebrew/Cellar/qt/6.7.3/lib/QtWidgets.framework/Headers
