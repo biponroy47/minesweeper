@@ -9,9 +9,9 @@ private:
 
 public:
   Cell();
-  bool get_revealed();
-  void set_revealed(bool new_reveal);
-  int get_type();
+  bool getRevealed();
+  void setRevealed(bool new_reveal);
+  int getType();
   void set_type(int new_type);
   bool is_bomb();
 };

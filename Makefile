@@ -54,10 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		src/minesweeperwindow.cpp \
-		src/cell.cpp moc_minesweeperwindow.cpp
+		src/cell.cpp \
+		src/cellgrid.cpp moc_minesweeperwindow.cpp
 OBJECTS       = main.o \
 		minesweeperwindow.o \
 		cell.o \
+		cellgrid.o \
 		moc_minesweeperwindow.o
 DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/device_config.prf \
@@ -403,9 +405,11 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
 		main.pro include/minesweeperwindow.h \
-		include/cell.h main.cpp \
+		include/cell.h \
+		include/cellgrid.h main.cpp \
 		src/minesweeperwindow.cpp \
-		src/cell.cpp
+		src/cell.cpp \
+		src/cellgrid.cpp
 QMAKE_TARGET  = main
 DESTDIR       = 
 TARGET        = main.app/Contents/MacOS/main
@@ -1150,8 +1154,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/minesweeperwindow.h include/cell.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp src/minesweeperwindow.cpp src/cell.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/minesweeperwindow.h include/cell.h include/cellgrid.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp src/minesweeperwindow.cpp src/cell.cpp src/cellgrid.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1190,12 +1194,14 @@ compiler_moc_header_make_all: moc_minesweeperwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_minesweeperwindow.cpp
 moc_minesweeperwindow.cpp: include/minesweeperwindow.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		include/cellgrid.h \
+		include/cell.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
 	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/biponroy/Downloads/CS3307/minesweeper/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/biponroy/Downloads/CS3307/minesweeper -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib include/minesweeperwindow.h -o moc_minesweeperwindow.cpp
@@ -1220,31 +1226,52 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 main.o: main.cpp include/cell.h \
 		include/minesweeperwindow.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		include/cellgrid.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 minesweeperwindow.o: src/minesweeperwindow.cpp include/minesweeperwindow.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		include/cellgrid.h \
+		include/cell.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QIcon \
+		/opt/homebrew/lib/QtGui.framework/Headers/qicon.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QMouseEvent \
-		/opt/homebrew/lib/QtGui.framework/Headers/qevent.h
+		/opt/homebrew/lib/QtGui.framework/Headers/qevent.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o minesweeperwindow.o src/minesweeperwindow.cpp
 
 cell.o: src/cell.cpp include/cell.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cell.o src/cell.cpp
+
+cellgrid.o: src/cellgrid.cpp include/cellgrid.h \
+		include/cell.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cellgrid.o src/cellgrid.cpp
 
 moc_minesweeperwindow.o: moc_minesweeperwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_minesweeperwindow.o moc_minesweeperwindow.cpp
