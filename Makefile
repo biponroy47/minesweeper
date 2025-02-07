@@ -1198,6 +1198,8 @@ moc_minesweeperwindow.cpp: include/minesweeperwindow.h \
 		include/cell.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
@@ -1229,6 +1231,8 @@ main.o: main.cpp include/cell.h \
 		include/cellgrid.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
@@ -1242,6 +1246,8 @@ minesweeperwindow.o: src/minesweeperwindow.cpp include/minesweeperwindow.h \
 		include/cell.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGridLayout \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
@@ -1254,8 +1260,6 @@ minesweeperwindow.o: src/minesweeperwindow.cpp include/minesweeperwindow.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QIcon \
 		/opt/homebrew/lib/QtGui.framework/Headers/qicon.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QMouseEvent \
@@ -1263,7 +1267,9 @@ minesweeperwindow.o: src/minesweeperwindow.cpp include/minesweeperwindow.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
-		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
+		/opt/homebrew/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o minesweeperwindow.o src/minesweeperwindow.cpp
 
 cell.o: src/cell.cpp include/cell.h

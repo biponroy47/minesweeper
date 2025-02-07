@@ -3,6 +3,7 @@
 
 #include "./cellgrid.h"
 #include <QGridLayout>
+#include <QLabel>
 #include <QPushButton>
 #include <QWidget>
 #include <vector>
@@ -12,6 +13,7 @@ class MinesweeperWindow : public QWidget {
 
 public:
   explicit MinesweeperWindow(QWidget *parent = nullptr);
+  ~MinesweeperWindow();
 
 protected:
   bool eventFilter(QObject *obj, QEvent *event) override;
@@ -25,10 +27,12 @@ private slots:
   void setDigitIcon(int x, int y, int digit);
   void changeIcon(int x, int y, std::string iconType);
   void checkIfGameWon();
+  void resetGame();
 
 private:
   QGridLayout *gridLayout;
   std::vector<std::vector<QPushButton *>> buttonGrid;
+  std::vector<std::vector<QLabel *>> labelGrid;
   CellGrid cellGrid;
   int cellCount;
 };

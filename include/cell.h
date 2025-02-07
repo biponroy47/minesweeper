@@ -13,7 +13,7 @@ public:
   void setRevealed(bool new_reveal);
   int getType();
   void set_type(int new_type);
-  bool is_bomb();
+  bool isBomb();
 };
 
 #endif

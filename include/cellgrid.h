@@ -16,6 +16,7 @@ public:
   void printCellGrid();
   bool hasBombsNearby(int row, int col);
   int countBombsNearby(int row, int col);
+  void resetCellGrid();
 };
 
 #endif
